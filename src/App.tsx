@@ -1,55 +1,106 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
+import { getInstance as gs } from '@ombori/grid-signals-react';
 import styled from 'styled-components';
 import { useSettings } from '@ombori/ga-settings';
-import { useStatus, useSubscribe, usePublish, setDefaultChannel } from '@ombori/ga-messaging';
+import { useHeartbeat } from '@ombori/ga-messaging';
+
 import { Settings } from './schema';
 
-// connect to anonymous message bus on the same grid-os host
-setDefaultChannel(`mobileapp`);
-
 function App() {
+  useHeartbeat();
+  const [productCount, setProductCount] = useState(0);
   const settings = useSettings<Settings>();
-  const connected = useStatus();
-  const pub = usePublish();
-  const [pongReceived, setPongReceived] = useState<Boolean>(false);
 
-  // send ping message when button is pressed
-  const ping = useCallback(() => {
-    pub('Test.ping', { hello: 'from mobile app' });
-  }, [pub]);
+  const productName = settings?.productName;
+  const productPrice = settings?.productPrice;
 
-  // subscribe to pong message
-  useSubscribe('Test.pong', async (data) => {
-    console.log('Pong received', data);
+  useEffect(() => {
+    if (productName) {
+      gs().sendContentView({ title: productName });
+    }
+  }, [productName]);
 
-    // blink background
-    setPongReceived(true);
-    await new Promise(resolve => setTimeout(resolve, 300));
-    setPongReceived(false);
-  }, [setPongReceived]);
+  useEffect(() => {
+    let sessionState: any;
+    let sessionEvent: any;
+    const startSessionSubscription = async () => {
+      sessionState  = await gs().subscribeSessionState((sessionState) => {
+        setProductCount(sessionState.CART['TEMPORARY-PRODUCT-ID-123']);
+      });
 
-  if (!settings) return <div>Loading settings...</div>
-  if (!connected) return <div>Connecting...</div>
+      sessionEvent = await gs().subscribeSessionEvent((sessionEvent) => {
+        console.log('SESSION_EVENT', sessionEvent);
+      });
+    }
+
+    startSessionSubscription();
+
+    return () => {
+      if (sessionState) sessionState.stop();
+      if (sessionEvent) sessionEvent.stop();
+    }
+  }, []);
+
+  const onAddToCart = useCallback(() => {
+    gs().sendCartAdd({ productId: 'TEMPORARY-PRODUCT-ID-123', quantity: 1 })
+  }, []);
+
+  if (!settings) {
+    return <Container>Loading gridapp settings...</Container>
+  }
 
   return (
-    <Container active={pongReceived}>
-      <Button onClick={ping}>Ping</Button>
+    <Container>
+      <ProductInfo>
+        <p>Product name: {productName}</p>
+        <p>Product price: {productPrice}</p>
+        <Button onClick={onAddToCart}>Add to Cart</Button>
+      </ProductInfo>
+      <RealTimeInfo>
+        <p>Real Cart Subscription</p>
+        <p>{productName} count: {productCount}</p>
+      </RealTimeInfo>
     </Container>
   );
 }
 
-const Container = styled.div<{ active: Boolean }>`
-  width: 100vw; 
-  height: 100vh; 
+const Container = styled.div`
+  text-align: center;
+  background-color: #282c34;
+  height: 100%;
+  position: absolute;
   display: flex;
-  align-items: center; 
+  flex-direction: column;
+  width: 100%;
+  color: white;
+  align-items: center;
   justify-content: center;
-  background: ${(({ active }) => active ? 'green' : "white")}
+  font-size: calc(10px + 1.5vmin);
+`;
+
+const ProductInfo = styled.header`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 64px;
+  border-bottom: solid 1px white;
 `;
 
 const Button = styled.button`
-  width: 50vw;
-  height: 50vh;
+  padding: 16px 32px;
+  margin-top: 24px;
+  align-self: center;
+  border-radius: 8px;
+`;
+
+const RealTimeInfo = styled.footer`
+  display: flex;
+  height: 100%;
+  flex: 1;
+  flex-direction: column;
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default App;
