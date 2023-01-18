@@ -1469,28 +1469,28 @@
   resolved "https://registry.yarnpkg.com/@ombori/ga-messaging/-/ga-messaging-2.90.2.tgz#e3fb877b9519505146f9981fdacac3a44e7557d1"
   integrity sha512-OxgMS/pRh8PV3T9TIa1aOiLjWJs2FJ1t91TfRwg1T94FWjUIRVt0tVOVEYOK3UYbV747yS7/RzZNDG7w0c53vA==
 
-"@ombori/ga-settings@2.185.0", "@ombori/ga-settings@^2.185.0":
-  version "2.185.0"
-  resolved "https://registry.yarnpkg.com/@ombori/ga-settings/-/ga-settings-2.185.0.tgz#9d01672b2848532dc0424b29ce03b426b0c47e78"
-  integrity sha512-sozUSBK431B4mp+7qdJ1Cqn7j9dPx2O7H4lgPQ8e+iPcZs6LclnnwVwEK9w5nNCh21uc3ufKdDxw/91YEc00OA==
+"@ombori/ga-settings@3.11.3", "@ombori/ga-settings@^3.11.3":
+  version "3.11.3"
+  resolved "https://registry.yarnpkg.com/@ombori/ga-settings/-/ga-settings-3.11.3.tgz#94028c35731e53dba3b28bb160e2dd8e2648aebf"
+  integrity sha512-jL1Ef3U8zhh6ZZ3g38m+AiaVxEbuVvF8S+w38+XWruY9DyVp1dG9WFqN1LYlH3rER3p8a8V84Gt/sMESxyIzzQ==
   dependencies:
     babel-plugin-module-resolver "^4.0.0"
 
-"@ombori/grid-signals-react@^2.197.0":
-  version "2.197.0"
-  resolved "https://registry.yarnpkg.com/@ombori/grid-signals-react/-/grid-signals-react-2.197.0.tgz#2f5e42f248bf91d717d2064ea0e0e5f5060ee1e9"
-  integrity sha512-aabH6eJc3NPk5cHiOP/n99r4WvPC3uxNHe7q1LIa9i7zX8e6V2H1KyP34mcIL34BiJ13ncgZqor23tf5d3QtnA==
+"@ombori/grid-signals-react@^3.11.3":
+  version "3.11.3"
+  resolved "https://registry.yarnpkg.com/@ombori/grid-signals-react/-/grid-signals-react-3.11.3.tgz#fbc0999057fbcb49152c7d271f41e8273eca1d5f"
+  integrity sha512-lSEi5U9K7tQW4kVzYa8nqUmeown1mOjux0nZKEthN6df0N5zDoHRaJLngdYCX2+vYs2pHcLuWElUxhZ0qBCN+w==
   dependencies:
-    "@ombori/ga-settings" "2.185.0"
-    "@ombori/grid-signals" "2.197.0"
-    babel-plugin-module-resolver "^4.0.0"
+    "@ombori/ga-settings" "3.11.3"
+    "@ombori/grid-signals" "3.11.0"
 
-"@ombori/grid-signals@2.197.0":
-  version "2.197.0"
-  resolved "https://registry.yarnpkg.com/@ombori/grid-signals/-/grid-signals-2.197.0.tgz#0e605c4854436b961d1a1950f85ff7090a8e60a6"
-  integrity sha512-BaeJTm4SO/JjTuVaKAaM4pRR0YHAC2BS9gIDWrFudatbOvAV1WjtWETVTVh7sViuX8ar05R7peQFMBTJxuJv+g==
+"@ombori/grid-signals@3.11.0":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/@ombori/grid-signals/-/grid-signals-3.11.0.tgz#70a5d78cb0bd950ed0c939a1af07b98536c70c97"
+  integrity sha512-WQPYvOb43i/l7hl8bOuKqIpxSwruShH99ie9QqYCMaaFKLFvyoS9otxILlKfT4gFRJW8ls0Wzq4mCcOM/rTMFA==
   dependencies:
     "@microsoft/signalr" "^6.0.0"
+    buffer "^6.0.3"
     isomorphic-fetch "^3.0.0"
     lodash "^4.17.21"
     lodash.isnil "^4.0.0"
@@ -1499,10 +1499,10 @@
     rimraf "^3.0.2"
     uuid "^8.3.2"
 
-"@ombori/ts-schema@^2.82.17":
-  version "2.82.17"
-  resolved "https://registry.yarnpkg.com/@ombori/ts-schema/-/ts-schema-2.82.17.tgz#3ea8748b4ef78fc1a42114523b56906634597deb"
-  integrity sha512-TDww1xXwXY00iE4M0GBNbQfFojR0KUACwBJZ81QyFSD7o0AV1YG8P7MeKAdeBJp37ulngr2Viuakm9fHo02C/w==
+"@ombori/ts-schema@^2.231.1":
+  version "2.231.1"
+  resolved "https://registry.yarnpkg.com/@ombori/ts-schema/-/ts-schema-2.231.1.tgz#8a51b144892a45534daabb7d012e4417f93fc62a"
+  integrity sha512-2FA3b4CEZjanP+/46DiNMQmYkwUZo7o2p5wrgyakheItai+NsGRo18Oswc5eqk3Az0GrvnKsigGbTj6BdhvkOg==
   dependencies:
     ts-json-schema-generator "^0.93.0"
 
@@ -2683,6 +2683,11 @@ base64-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.1.tgz#58ece8cb75dd07e71ed08c736abc5fac4dbf8df1"
   integrity sha512-mLQ4i2QO1ytvGWFWmcngKO//JXAQueZvwEKtjgQFM4jIK0kU+ytMfplL8j+n5mspOfjHwoAg+9yhb7BwAHm36g==
 
+base64-js@^1.3.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+  integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
+
 base@^0.11.1:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/base/-/base-0.11.2.tgz#7bde5ced145b6d551a90db87f83c558b4eb48a8f"
@@ -2934,6 +2939,14 @@ buffer@^4.3.0:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
     isarray "^1.0.0"
+
+buffer@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
+  integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
+  dependencies:
+    base64-js "^1.3.1"
+    ieee754 "^1.2.1"
 
 builtin-status-codes@^3.0.0:
   version "3.0.0"
@@ -5683,6 +5696,11 @@ ieee754@^1.1.4:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.13.tgz#ec168558e95aa181fd87d37f55c32bbcb6708b84"
   integrity sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==
+
+ieee754@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
+  integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
 iferr@^0.1.5:
   version "0.1.5"

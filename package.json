@@ -1,12 +1,12 @@
 {
   "name": "vnx-test-org-1.mobile-session-subscription-demo",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "private": true,
   "homepage": "./",
   "application-type": "mobile",
   "scripts": {
     "bootstrap": "mkdir src/settings && cp default.settings.json src/settings/index.json",
-    "start": "yarn schema && REACT_APP_MESSAGING_URL=ws://localhost:8088 react-scripts start",
+    "start": "yarn schema && PORT=3002 react-scripts start",
     "schema": "mkdir -p build && npx ts-schema src/schema.ts build",
     "prodbuild": "cross-env GENERATE_SOURCEMAP=false react-scripts build && cp package.json build/",
     "build": "rimraf build && yarn prodbuild && yarn schema && omg app build",
@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@ombori/ga-messaging": "^2.90.2",
-    "@ombori/ga-settings": "^2.185.0",
-    "@ombori/grid-signals-react": "^2.197.0",
+    "@ombori/ga-settings": "^3.11.3",
+    "@ombori/grid-signals-react": "^3.11.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@ombori/ga-cli": "^1.7.6",
-    "@ombori/ts-schema": "^2.82.17",
+    "@ombori/ts-schema": "^2.231.1",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
